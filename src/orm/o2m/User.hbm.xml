@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- hibernate映射文件 映射java中的类student和数据库表stu-->
+<hibernate-mapping package="orm.o2m">
+ 	<class name="User" table="t_user">
+ 		<id name="id">
+ 			 <generator class="increment"></generator>
+ 		</id>
+ 		<property name="name"></property>
+ 		<!-- 
+ 		 <set name="group" cascade="all">
+ 		 	<key column="group_id"></key>
+ 			<many-to-many column="group" class="Group" />
+ 		 </set>
+ 		 -->
+ 		 <!-- name="group"  表示要给group属性做映射
+ 		 	  class="Group" 表示这个属性的类型是Group
+ 		 	  <column name="group_id"></column>指明将来那个外键的名字叫group_id
+ 		 	  	一定要设置而且要和one的一方所设的外键列的名字一样,否则表中会有两个外键列
+ 		  -->
+ 		 <many-to-one name="group" class="Group" >
+ 		 	<column name="group_id"></column>
+ 		 </many-to-one>
+ 	</class>
+</hibernate-mapping>
+

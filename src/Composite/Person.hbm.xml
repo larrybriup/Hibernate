@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="Composite">
+ 		<class name="Person" table="t_person">
+ 		<composite-id name="pk" class="PersonPK">
+ 			<key-property name="id"></key-property>
+ 			<key-property name="name"></key-property>
+ 		</composite-id>
+ 		<property name="age"></property>
+ 		<component name="address" class="Address">
+ 			<property name="country"></property>
+ 			<property name="city"></property>
+ 		</component>
+ 	</class>
+ 	
+</hibernate-mapping>
+
+
+
+
+

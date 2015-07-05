@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- hibernate映射文件 映射java中的类student和数据库表stu-->
+<hibernate-mapping package="Estore">
+ 	<class name="Customer" table="e_customer">
+ 		<id name="id">
+ 			<generator class="increment"></generator>
+ 		</id>
+ 		<property name="name"></property>
+ 		<one-to-one name="order" class="Order" cascade="all"></one-to-one>
+ 		<set name="orders" cascade="all" inverse="true">
+ 			<key column="c_id"></key>
+ 			<one-to-many class="Order"></one-to-many>
+ 		</set>
+ 		
+ 	</class>
+ 	
+ 	<class name="Book" table="e_book" >
+ 	<id name="id">
+ 			<generator class="increment"></generator>
+ 		</id>
+ 		<property name="name"></property>
+ 		<one-to-one name="item" class="Item" cascade="all"></one-to-one>
+ 		
+ 	</class>
+ 	
+ 	<class name="Order" table="e_order">
+ 		<composite-id>
+ 			<key-property name="id"></key-property>
+ 			<key-property name="c_id"></key-property>
+ 		</composite-id>
+ 	<!-- 
+ 	<id name="id">
+ 			<generator class="increment"></generator>
+ 		</id>
+ 	
+ 	 	<id>
+ 	 		<column name="id"></column>
+ 	 		<column name="c_id"></column>
+ 	 	</id>
+ 	 -->
+ 		<many-to-one name="customer" class="Customer" column="c_id" cascade="all"></many-to-one>
+ 		<joined-subclass name="Item">
+ 			<key>
+ 				<column name="id"></column>
+ 				<column name="c_id"></column>
+ 			</key>
+ 			<many-to-one name="book" class="Book" column="b_id" cascade="all"></many-to-one>
+ 		</joined-subclass>
+ 	</class>
+ 	
+ 	<!-- 
+ 	
+ 	<class name="Item" table="e_item">
+ 	<id name="id">
+ 			<generator class="increment"></generator>
+ 		</id>
+ 		<property name="name"></property>
+ 	</class>
+ 	 -->
+ 	
+</hibernate-mapping>
+
+
+
+
+

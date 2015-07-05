@@ -1,0 +1,15 @@
+/Bean/
+/Component/
+/Composite/
+/Estore/
+/Inherite/
+/annotation/
+/cache/
+/criteria/
+/ehcache.xml
+/hibernate-annotation.cfg.xml
+/hibernate.cfg.xml
+/hql/
+/lock/
+/log4j.properties
+/orm/

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- hibernate映射文件 映射java中的类student和数据库表stu-->
+<hibernate-mapping package="Bean">
+ 	<class name="Student" table="stu">
+ 		<id name="id" column="sid" type="long">
+ 			<!-- 
+ 			<generator class="sequence">
+ 				<param name="sequence">my_seq</param>
+ 			</generator>
+ 			 <generator class="hilo">
+ 			 	<param name="table">t_hi</param>
+ 			 	<param name="column">nextHi</param>
+ 			 	<param name="max_lo">5</param>
+ 			 </generator>
+ 			 <generator class="seqhilo">
+ 			 	<param name="sequence">my_seq</param>
+ 			 	<param name="max_lo">10</param>
+ 			 </generator>
+ 			 -->
+ 			 <generator class="increment"></generator>
+ 		</id>
+ 		<property name="name" column="sname" type="java.lang.String"></property>
+ 		<property name="age" column="sage" type="java.lang.Integer"></property>
+ 	</class>
+ 	
+</hibernate-mapping>
+
+
+
+
+

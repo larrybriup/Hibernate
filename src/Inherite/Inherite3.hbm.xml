@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="Inherite">
+<!-- 数据库中生成三张表,子父类各一张 -->
+ 	<class name="Person" table="t_person" >
+ 		<!--  映射联合主键-->
+ 		<composite-id name="pk" class="PersonPK">
+ 			<key-property name="id"></key-property>
+ 			<key-property name="name"></key-property>
+ 		</composite-id>
+ 		<!-- discriminator一定要放在主键定义之后 -->
+ 		<!-- 鉴别器 用来表示某条数据对应的是那个类 -->
+ 		<!-- hibernate 会根据鉴别器的配置
+ 			在表中生成一个叫flag的列作为标示
+ 			java.lang.String
+ 		-->
+ 		<property name="age"></property>
+ 		<component name="address" class="Address">
+ 			<property name="country"></property>
+ 			<property name="city"></property>
+ 		</component>
+ 		<!--配置子父类之间的关联 -->
+ 		<joined-subclass name="Student">
+ 		<!-- 父类表中的主键在子类表中的做外键的列的名字 -->
+ 			<key>
+ 				<column name="id"></column>
+ 				<column name="name"></column>
+ 			</key>
+ 			<!-- 子类中自己的属性映射 -->
+ 			<property name="score"></property>
+ 		</joined-subclass>
+ 		<joined-subclass name="Teacher">
+ 			<key>
+ 				<column name="id"></column>
+ 				<column name="name"></column>
+ 			</key>
+ 			<property name="salary"></property>
+ 		</joined-subclass>
+ 	</class>
+ 	
+</hibernate-mapping>
+
+
+
+
+

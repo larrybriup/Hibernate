@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="orm.m2m">
+ 		<class name="Student" table="t_student">
+ 		<id name="id">
+ 			 <generator class="increment"></generator>
+ 		</id>
+ 		<property name="name"></property>
+ 		<set name="teachers" table="t_s">
+ 			<key column="s_id"/>
+ 		<many-to-many class="Teacher" column="t_id"></many-to-many>
+ 		</set>
+ 	</class>
+ 	
+</hibernate-mapping>
+
+
+
+
+

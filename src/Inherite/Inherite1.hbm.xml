@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="Inherite">
+<!-- 数据库中生成一张表 -->
+ 		<class name="Person" table="t_person" discriminator-value="p">
+ 		<!--  映射联合主键-->
+ 		<composite-id name="pk" class="PersonPK">
+ 			<key-property name="id"></key-property>
+ 			<key-property name="name"></key-property>
+ 		</composite-id>
+ 		<!-- discriminator一定要放在主键定义之后 -->
+ 		<!-- 鉴别器 用来表示某条数据对应的是那个类 -->
+ 		<!-- hibernate 会根据鉴别器的配置
+ 			在表中生成一个叫flag的列作为标示
+ 			java.lang.String
+ 		-->
+ 		<discriminator column="flag" type="string"></discriminator>
+ 		<property name="age"></property>
+ 		<component name="address" class="Address">
+ 			<property name="country"></property>
+ 			<property name="city"></property>
+ 		</component>
+ 		<!-- 配置Person的子类 -->
+ 		<subclass name="Student" extends="Person" discriminator-value="s">
+			<property name="score"></property>
+ 		</subclass>
+ 		<subclass name="Teacher" extends="Person" discriminator-value="t">
+			<property name="salary"></property>
+ 		</subclass>
+ 	</class>
+ 	
+</hibernate-mapping>
+
+
+
+
+

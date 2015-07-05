@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="orm.m2m">
+ 	<class name="Teacher" table="t_teacher">
+ 		<id name="id">
+ 			 <generator class="increment"></generator>
+ 		</id>
+ 		<property name="name"></property>
+ 		<!-- 
+ 		name="students"		要设置映射关系的属性的名字
+ 		table="t_s"			将来要建立的桥表的名字
+ 		<key column="t_id"/>当前类多对应的表在桥表中所对应的外键名称
+ 		class="Student"		多对多关系中的另外一方是什么类型
+ 		column="s_id"		Student类所对应的表在桥表中的外键的名字s_id
+ 		多对多关系hibernate会默认提供有一个桥表
+ 		 -->
+ 		<set name="students" table="t_s" cascade="all"  lazy="true" inverse="true">
+ 			<key column="t_id"/>
+ 			<many-to-many class="Student" column="s_id"/>
+ 		</set>
+ 	</class>
+ 	<!-- 
+ 		在多对多关系中每一方都默认自己维护外键值(默认inverse="false"),
+ 		所以一定有且只有一方要设置inverse="true"
+ 		两边都设置为false就会报错
+ 		两边都设置为true那就没人管了
+ 	 -->
+</hibernate-mapping>
+
+
+
+
+

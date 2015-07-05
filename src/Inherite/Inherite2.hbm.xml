@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="Inherite">
+<!-- 数据库中生成两张表,两个子类各一张 property是财产的意思,而attribute是属性的意思-->
+ 		<class name="Teacher" table="t_teacher">
+ 		<!--  映射联合主键-->
+ 		<composite-id name="pk" class="PersonPK">
+ 			<key-property name="id"></key-property>
+ 			<key-property name="name"></key-property>
+ 		</composite-id>
+ 		<property name="age"></property>
+ 		<component name="address" class="Address">
+ 			<property name="country"></property>
+ 			<property name="city"></property>
+ 		</component>
+ 		<property name="salary"></property>
+ 	</class>
+ 	<class name="Student" table="t_student">
+ 		<!--  映射联合主键-->
+ 		<composite-id name="pk" class="PersonPK">
+ 			<key-property name="id"></key-property>
+ 			<key-property name="name"></key-property>
+ 		</composite-id>
+ 		<property name="age"></property>
+ 		<component name="address" class="Address">
+ 			<property name="country"></property>
+ 			<property name="city"></property>
+ 		</component>
+ 		<property name="score"></property>
+ 	</class>
+ 	
+</hibernate-mapping>
+
+
+
+
+
