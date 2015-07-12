@@ -15,9 +15,7 @@
 		</property>
 	<property name="connection.username">king</property>
 	<property name="connection.password">king999</property>
-	<property name="dialect">
-		org.hibernate.dialect.Oracle10gDialect
-		</property>
+	<property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
 	<!-- 设置hibernate的相关属性值 -->
 	<property name="show_sql">true</property>
 	<property name="format_sql">true</property>
