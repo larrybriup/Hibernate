@@ -7,29 +7,32 @@
 
 <session-factory>
 	<!-- 连接数据库的相关信息 -->
-	<property name="connection.driver_class">
-		oracle.jdbc.driver.OracleDriver
-		</property>
-	<property name="connection.url">
-		jdbc:oracle:thin:@127.0.0.1:1521:XE
-		</property>
-	<property name="connection.username">king</property>
-	<property name="connection.password">king999</property>
-	<property name="dialect">
-		org.hibernate.dialect.Oracle10gDialect
-		</property>
+	
+		<!-- oracle config -->
+<!-- 		<property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property> -->
+<!-- 		<property name="connection.url">jdbc:oracle:thin:@127.0.0.1:1521:XE</property> -->
+<!-- 		<property name="connection.username">king</property> -->
+<!-- 		<property name="connection.password">king999</property> -->
+<!-- 		<property name="dialect">org.hibernate.dialect.Oracle10gDialect</property> -->
+
+	<!-- mysql config -->
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/test</property>
+		<property name="connection.username">test</property>
+		<property name="connection.password">test</property>
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+	
 	<!-- 设置hibernate的相关属性值 -->
 	<property name="show_sql">true</property>
 	<property name="format_sql">true</property>
 	<property name="current_session_context_class">thread</property>
 	
 	<!-- 使用注解类需要用这个标签来描述 
-	
-	<mapping class="packagename.classname"/>
-	<mapping class="annotation.Husband"/>
-	<mapping class="annotation.Wife"/>
-	<mapping class="annotation.Group"/>
-	<mapping class="annotation.User"/>
+		<mapping class="packagename.classname"/>
+		<mapping class="annotation.Husband"/>
+		<mapping class="annotation.Wife"/>
+		<mapping class="annotation.Group"/>
+		<mapping class="annotation.User"/>
 	-->
 	<mapping class="annotation.Student"/>
 	<mapping class="annotation.Teacher"/>
