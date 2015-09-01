@@ -9,6 +9,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "t_user")
 public class User {
+
 	private long id;
 	private String name;
 	private Group group;

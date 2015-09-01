@@ -5,19 +5,17 @@ public class Student {
 	private String name;
 	private int age;
 
-	//只要是java.bean就要有无参构造器
+	// 只要是java.bean就要有无参构造器
 	public Student() {
 	}
 
 	public Student(long id, String name, int age) {
-		
 		this.id = id;
 		this.name = name;
 		this.age = age;
 	}
-	public Student( String name, int age) {
-		
-		
+
+	public Student(String name, int age) {
 		this.name = name;
 		this.age = age;
 	}
@@ -47,7 +45,7 @@ public class Student {
 	}
 
 	public String toString() {
-		return "id="+id+" name="+name+" age="+age;
+		return "id=" + id + " name=" + name + " age=" + age;
 	}
 
 }

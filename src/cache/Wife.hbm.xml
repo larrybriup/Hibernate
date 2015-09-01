@@ -2,15 +2,13 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="cache">
- 		<class name="Wife" >
+ 	<class name="Wife">
 		<cache usage="read-write"/>
  		<id name="id">
  			 <generator class="increment"></generator>
  		</id>
  		<property name="name"></property>
  		<one-to-one name="husband" class="Husband" cascade="all"></one-to-one>
- 		<!-- 
- 		 -->
  	</class>
 </hibernate-mapping>
 

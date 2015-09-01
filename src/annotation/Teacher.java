@@ -1,6 +1,6 @@
 package annotation;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -18,17 +18,17 @@ import javax.persistence.Table;
 public class Teacher {
 	private long id;
 	private String name;
-	private Set<Student> students = new HashSet<Student>();
+	private Set<Student> students = new LinkedHashSet<Student>();
 
 //	@Transient
-	@ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-	@JoinTable(name="t_s",
-						joinColumns={
-								@JoinColumn(name="t_id")
-								},
-						inverseJoinColumns= {
-								@JoinColumn(name="s_id")
-								}
+	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@JoinTable(name="students_teachers",
+						joinColumns = {
+							@JoinColumn(name="t_id")
+						},
+						inverseJoinColumns = {
+							@JoinColumn(name="s_id")
+						}
 	)
 	public Set<Student> getStudents() {
 		return students;

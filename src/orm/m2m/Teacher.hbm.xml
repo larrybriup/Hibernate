@@ -10,7 +10,7 @@
  		<!-- 
  		name="students"		要设置映射关系的属性的名字
  		table="t_s"			将来要建立的桥表的名字
- 		<key column="t_id"/>当前类多对应的表在桥表中所对应的外键名称
+ 		<key column="t_id"/>当前类所对应的表在桥表中所对应的外键名称
  		class="Student"		多对多关系中的另外一方是什么类型
  		column="s_id"		Student类所对应的表在桥表中的外键的名字s_id
  		多对多关系hibernate会默认提供有一个桥表

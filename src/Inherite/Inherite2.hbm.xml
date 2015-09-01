@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="Inherite">
 <!-- 数据库中生成两张表,两个子类各一张 property是财产的意思,而attribute是属性的意思-->
- 		<class name="Teacher" table="t_teacher">
+ 	<class name="Teacher" table="t_teacher">
  		<!--  映射联合主键-->
  		<composite-id name="pk" class="PersonPK">
  			<key-property name="id"></key-property>

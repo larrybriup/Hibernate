@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="cache">
  	<class name="Husband" >
- 	<cache usage="read-write"/>
+ 		<cache usage="read-write"/>
  		<id name="id">
  			 <generator class="increment"></generator>
  		</id>

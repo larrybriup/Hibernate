@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- hibernate映射文件 映射java中的类student和数据库表stu-->
 <hibernate-mapping package="orm.o2m">
- 		<class name="Group" table="t_group">
+ 	<class name="Group" table="t_group">
  		<id name="id">
  			 <generator class="increment"></generator>
  		</id>
@@ -13,21 +12,20 @@
  			<key column="group_id"></key>在这个一对多关系下所生成的外键列的名字叫group_id
  			注意: 1:n关系中外键列都会建立在n的一方.
  			
- 			<one-to-many class="User"/>当前关系中
- 										many的一方是User类型的
+ 			<one-to-many class="User"/>
+ 				当前关系中many的一方是User类型的
  			cascade="all-delete-orphan" "all" 区别:
- 				all:当我们在session缓存中接触对象之间的关系的时候,在flush()之后,
+ 				all: 当我们在session缓存中接触对象之间的关系的时候,在flush()之后,
  				会把外键值设置为null.
- 				all-delete-orphan:当我们在session缓存中接触对象之间的关系的时候,在flush()之后,
+ 				all-delete-orphan: 当我们在session缓存中接触对象之间的关系的时候,在flush()之后,
  				并不会把外键值设置为null,二而是把整条数据都删除
+ 				
+ 			inverse=true 表示有user维护对应关系
  		 -->
- 		<set name="users" cascade="all" inverse="true" lazy="false" fetch="select">
+ 		<set name="users" cascade="all" inverse="true" lazy="true" fetch="select">
  			<key column="group_id"></key>
  			<one-to-many class="User"/>
  		</set>
- 		<!-- 
- 		
- 		 -->
  	</class>
  	
 </hibernate-mapping>

@@ -23,13 +23,17 @@ col s.serial#   for a15;
 alter system kill session '23, 1647';
 hibernate 中的锁分为乐观锁和悲观锁:
  悲观锁:
-	hibernate是利用数据库里面的锁机制来完成的,比如oracle中sql语句for update和for update nowait来实现的.
+	hibernate是利用数据库里面的锁机制来完成的,比如oracle中sql语句for update和
+	for update nowait来实现的.
  乐观锁:依靠hibernate中的一些设置来完成的.
 	
 
 
 hibernate的锁机制:
-	如果在hibernate中吧事务的隔离级别设置成serializable,那儿哦们就就没有必要用个hibernate中的锁机制了,但是这样设置后效率就变低了,所以一般会设置为read-committed,这个只能解决脏读又有一定的效率,只是这种设置下仍然会有不可重负读的问题(幻读不考虑,很少出现),所以我们在hibernate中就可以使用锁机制来结局这个问题
+	如果在hibernate中把事务的隔离级别设置成serializable,那儿我们就就没有必要用hibernate
+	中的锁机制了,但是这样设置后效率就变低了,所以一般会设置为read-committed,这个只能在解决脏读
+	中有一定的效率,只是这种设置下仍然会有不可重复读的问题(幻读不考虑,很少出现),所以我们在
+	hibernate中就可以使用锁机制来解决这个问题
 
 isolation 事务隔离级别
 	read-uncommitted 不提交也能读
@@ -37,17 +41,20 @@ isolation 事务隔离级别
 	repeatable-read	 解决了脏读和不可重复读
 	serializable	 三个问题都解决了
 	级别越高解决的问题越多但是效率越低
-	注意:并不是多有数据库都支持着四中事务隔离级别,oracle默认read-committed,并支持read-committed,serializable两种,mysql支持所有,
+	注意:并不是所有数据库都支持着四中事务隔离级别,oracle默认read-committed,
+		并支持read-committed,serializable两种,mysql支持所有
 
 
 事务以及事务所引发的问题
 
-1脏读:
+1， 脏读:
 	主要针对update操作.
 	一个事务读到另一个事务修改过但是还没有提交的数据
-2不可重复读:
+2， 不可重复读:
 	主要针对update操作.
-	一个事务A在第一次读数据和第二次读数据之间有另一个事务B把这个事务更改并提交了,所以就出现一个事务A里面读取一个数据两次结果不同
-3幻读:
+	一个事务A在第一次读数据和第二次读数据之间有另一个事务B把这个事务更改并提交了,
+	所以就出现一个事务A里面读取一个数据两次结果不同
+3， 幻读:
 	主要针对是insert/delete操作.
-	事务A第一次用where条件筛选出了10条数据,事务A用同样的条件筛选的数据却是11条,因为事务B在事务A第一次和第二次查询之间进行了插入操作,并且插入的这个数据满足事务A的where条件
+	事务A第一次用where条件筛选出了10条数据,事务A用同样的条件筛选的数据却是11条,
+	因为事务B在事务A第一次和第二次查询之间进行了插入操作,并且插入的这个数据满足事务A的where条件

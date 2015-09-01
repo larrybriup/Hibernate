@@ -3,7 +3,6 @@ package annotation;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.annotation.Generated;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,11 +15,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "t_group")
 public class Group {
+
 	static long id;
 	private String name;
 	private Set<User> users = new HashSet<User>();
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,mappedBy="group")
+//	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "group")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "group_id")
 	public Set<User> getUsers() {
 		return users;

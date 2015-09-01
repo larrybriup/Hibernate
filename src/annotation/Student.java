@@ -1,6 +1,6 @@
 package annotation;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -14,13 +14,14 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "t_student")
 public class Student {
+	
 	private long id;
 	private String name;
-	private Set<Teacher> teachers = new HashSet<Teacher>();
+	private Set<Teacher> teachers = new LinkedHashSet<Teacher>();
 
 //	@Transient
 	@ManyToMany(mappedBy="students")
-	@JoinTable(name="t_s",
+	@JoinTable(name="students_teachers",
 					joinColumns= {
 							@JoinColumn(name="s_id")
 					},

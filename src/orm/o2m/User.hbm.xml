@@ -19,7 +19,7 @@
  		 	  <column name="group_id"></column>指明将来那个外键的名字叫group_id
  		 	  	一定要设置而且要和one的一方所设的外键列的名字一样,否则表中会有两个外键列
  		  -->
- 		 <many-to-one name="group" class="Group" >
+ 		 <many-to-one name="group" class="Group">
  		 	<column name="group_id"></column>
  		 </many-to-one>
  	</class>

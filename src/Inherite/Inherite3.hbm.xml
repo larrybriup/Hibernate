@@ -9,19 +9,13 @@
  			<key-property name="id"></key-property>
  			<key-property name="name"></key-property>
  		</composite-id>
- 		<!-- discriminator一定要放在主键定义之后 -->
- 		<!-- 鉴别器 用来表示某条数据对应的是那个类 -->
- 		<!-- hibernate 会根据鉴别器的配置
- 			在表中生成一个叫flag的列作为标示
- 			java.lang.String
- 		-->
  		<property name="age"></property>
  		<component name="address" class="Address">
  			<property name="country"></property>
  			<property name="city"></property>
  		</component>
  		<!--配置子父类之间的关联 -->
- 		<joined-subclass name="Student">
+ 		<joined-subclass name="Student" table="t_student">
  		<!-- 父类表中的主键在子类表中的做外键的列的名字 -->
  			<key>
  				<column name="id"></column>
@@ -30,7 +24,7 @@
  			<!-- 子类中自己的属性映射 -->
  			<property name="score"></property>
  		</joined-subclass>
- 		<joined-subclass name="Teacher">
+ 		<joined-subclass name="Teacher" table="t_teacher">
  			<key>
  				<column name="id"></column>
  				<column name="name"></column>

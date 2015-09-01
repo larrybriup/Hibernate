@@ -8,19 +8,29 @@
  			 <generator class="increment"></generator>
  		</id>
  		<property name="name"></property>
+ 		
  		<!-- unique="true" 外键值是唯一的,不能重复,从而做到了一对一的关系 -->
- 		<!-- name="wife" 表示给当前Husband类中的一个名字为wife的属性做映射 
+ 		<!-- 
+ 			 name="wife" 表示给当前Husband类中的一个名字为wife的属性做映射 
  			 class="Wife" 名字为wife的属性类型是Wife
  			 column="wife_id" 将来在Husband类所对应的表中生成一个外键列为wife_id
  			 unique="true" 本来<many-to-one>表示多对一关系,但是设置了unique="true"
  			 就是给外键列上面加上了一个唯一约束这个时候多对一关系就变成了一对一关系
- 			 lazy="false" 不延迟加载fetch="join"
+ 			 lazy="false", 如果fetch="join"， 则不延迟加载
  		-->
- 		<many-to-one name="wife" class="Wife" column="wife_id" unique="true" cascade="all" lazy="false" fetch="join"></many-to-one>
+ 		<many-to-one 
+	 		name="wife" 
+	 		class="Wife" 
+	 		column="wife_id"
+	 		unique="true" 
+	 		cascade="all" 
+	 		lazy="false" 
+	 		fetch="join">
+ 		 </many-to-one>
  		<!-- 
- 			cascade="all" 设置级联操作save-update delete all all-delete-orphan
- 			lazy="proxy" 设置延迟加载false:不延迟 proxy:延迟
- 			fetch="join" 设置查询时的抓取级联对象的策略 
+ 			cascade="all" 设置级联操作save-update, delete, all, all-delete-orphan
+ 			lazy="proxy" 设置延迟加载 false:不延迟,  proxy:延迟
+ 			fetch="join" 设置查询时的抓取级联对象的策略 :
  						join:使用连接查询的方式,不能设置延迟加载(因为就一个sql语句)
  						select :一张表发出一个sql语句,可以设置延迟加载(因为会发出很多sql语句)
  		 -->

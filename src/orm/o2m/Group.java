@@ -1,12 +1,13 @@
 package orm.o2m;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class Group {
 	static long id;
 	private String name;
-	private Set<User> users = new HashSet<User>();
+//	this will keep the insert order of user
+	private Set<User> users = new LinkedHashSet<User>();
 
 	public Set<User> getUsers() {
 		return users;

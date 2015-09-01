@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="lock">
- 		<class name="Wife" optimistic-lock="version">
+ 	<class name="Wife" optimistic-lock="version">
  		<id name="id">
  			 <generator class="increment"></generator>
  		</id>

@@ -17,25 +17,26 @@
 
 	<!-- mysql config -->
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="connection.url">jdbc:mysql://localhost:3306/test</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/test_db</property>
 		<property name="connection.username">test</property>
 		<property name="connection.password">test</property>
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 	
 	<!-- 设置hibernate的相关属性值 -->
-	<property name="show_sql">true</property>
-	<property name="format_sql">true</property>
-	<property name="current_session_context_class">thread</property>
+		<property name="show_sql">true</property>
+		<property name="format_sql">true</property>
+		<property name="current_session_context_class">thread</property>
+		<property name="hbm2ddl.auto">create</property> 
 	
-	<!-- 使用注解类需要用这个标签来描述 
-		<mapping class="packagename.classname"/>
 		<mapping class="annotation.Husband"/>
 		<mapping class="annotation.Wife"/>
+	<!-- 使用注解类需要用这个标签来描述 
+		<mapping class="packagename.classname"/>
 		<mapping class="annotation.Group"/>
 		<mapping class="annotation.User"/>
+		<mapping class="annotation.Student"/>
+		<mapping class="annotation.Teacher"/>
 	-->
-	<mapping class="annotation.Student"/>
-	<mapping class="annotation.Teacher"/>
 </session-factory>
 
 

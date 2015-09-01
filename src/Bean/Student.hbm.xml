@@ -4,8 +4,13 @@
 <!-- hibernate映射文件 映射java中的类student和数据库表stu-->
 <hibernate-mapping package="Bean">
  	<class name="Student" table="stu">
+ 		
+<!--  		default si assigned -->
  		<id name="id" column="sid" type="long">
+ 			 <generator class="assigned"></generator>
  			<!-- 
+ 			 <generator class="native"></generator>
+ 			 <generator class="increment"></generator>
  			<generator class="sequence">
  				<param name="sequence">my_seq</param>
  			</generator>
@@ -19,7 +24,6 @@
  			 	<param name="max_lo">10</param>
  			 </generator>
  			 -->
- 			 <generator class="increment"></generator>
  		</id>
  		<property name="name" column="sname" type="java.lang.String"></property>
  		<property name="age" column="sage" type="java.lang.Integer"></property>

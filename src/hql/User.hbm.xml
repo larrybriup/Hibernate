@@ -8,9 +8,9 @@
  			 <generator class="increment"></generator>
  		</id>
  		<property name="name"></property>
- 		 <many-to-one name="group" class="Group" lazy="proxy" fetch="select">
+ 		<many-to-one name="group" class="Group" lazy="proxy" fetch="select">
  		 	<column name="group_id"></column>
- 		 </many-to-one>
+ 		</many-to-one>
  	</class>
  	
 </hibernate-mapping>
